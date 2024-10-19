@@ -7,7 +7,8 @@
   --secondary-light: #f8fafc;
   --primary-dark: #484554;
   --select: #fcf7ff;
-  --primary-select: #484554;
+  --primary-select: #64748b;
+  --new-select: #fcf7ff;
   --alert: #f43f5e;
   --success: #10b981;
   --in-progress: #3b82f6;
@@ -42,7 +43,7 @@
     --radius: 0.5rem;
   }
   .dark {
-    --background: 252, 17.9%, 30%;
+    --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;

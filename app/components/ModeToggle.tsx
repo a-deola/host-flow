@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useTheme } from "next-themes";
 
-export default function ModeToggle({ isCollapsed }: { isCollapsed: boolean }) {
+export default function ModeToggle() {
   const { theme, setTheme } = useTheme();
   const [isDarkMode, setIsDarkMode] = useState(theme === "dark");
 
@@ -18,11 +18,7 @@ export default function ModeToggle({ isCollapsed }: { isCollapsed: boolean }) {
         src={isDarkMode ? "/icons/dark-switch.png" : "/icons/switch-light.png"}
         alt="Mode"
       />
-      <span
-        className={`ml-4 text-sm transition-all duration-300 ${
-          isCollapsed ? "hidden" : "block"
-        }`}
-      >
+      <span className="ml-4 text-sm transition-all duration-300">
         Dark Mode
       </span>
     </div>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import NavItem from "./NavItem";
 import ModeToggle from "./ModeToggle";
+import CollapseButton from "./CollapseButton";
 
 const Sidenav = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -14,92 +15,80 @@ const Sidenav = () => {
   return (
     <div
       className={`flex flex-col border border-r h-screen transition-all duration-300 gap-2 ${
-        isCollapsed ? "w-12" : "w-48"
+        isCollapsed ? "w-14" : "w-48"
       }`}
     >
       <nav className="flex flex-col flex-grow">
         <NavItem
           href="/"
-          icon="/icons/home.png"
+          iconCollapsed="/icons/iconsCollapsed/home.png"
+          iconExpanded="/icons/iconsExpanded/home.png"
           text="Home"
           isCollapsed={isCollapsed}
-          color={isCollapsed ? "#64748B" : "var(--primary-select)"}
         />
         <NavItem
-          href="/events"
-          iconCollapsed="/icons/components.png"
-          iconExpanded="icons/calendar.png"
+          href="/"
+          iconCollapsed="/icons/iconsCollapsed/components.png"
+          iconExpanded="/icons/iconsExpanded/solar_calendar-linear.png"
           text="Events"
           isCollapsed={isCollapsed}
-          color={isCollapsed ? "#64748B" : "var(--primary-select)"}
         />
         <NavItem
           href="/"
-          iconExpanded="/icons/solar_user-speak-rounded-linear.png"
-          iconCollapsed="/icons/receive-money.png"
+          iconExpanded="/icons/iconsExpanded/solar_user-speak-rounded-linear.png"
+          iconCollapsed="/icons/iconsCollapsed/receive-money.png"
           text="Speakers"
           isCollapsed={isCollapsed}
-          color={isCollapsed ? "#64748B" : "var(--primary-select)"}
         />
         <NavItem
           href="/"
-          icon="/icons/bell.png"
-          text="Notifications"
+          iconCollapsed="/icons/iconsCollapsed/calendar.png"
+          iconExpanded="/icons/iconsExpanded/solar_document-linear.png"
+          text="Reports"
           isCollapsed={isCollapsed}
-          color={isCollapsed ? "#64748B" : "var(--primary-select)"}
         />
         <NavItem
           href="/"
-          icon="/icons/double-chat-bubble.png"
+          iconCollapsed="/icons/iconsCollapsed/bell.png"
+          iconExpanded="/icons/iconsExpanded/bell.png"
+          text="Notifications"
+          notificationsCount={5}
+          isCollapsed={isCollapsed}
+        />
+        <NavItem
+          href="/"
+          iconCollapsed="/icons/iconsCollapsed/double-chat-bubble.png"
+          iconExpanded="/icons/iconsExpanded/double-chat-bubble.png"
           text="Messages"
           isCollapsed={isCollapsed}
-          color={isCollapsed ? "#64748B" : "var(--primary-select)"}
         />
         <NavItem
           href="/"
-          icon="/icons/settings-2.png"
+          iconCollapsed="/icons/iconsCollapsed/settings.png"
+          iconExpanded="/icons/iconsExpanded/settings.png"
           text="Settings"
           isCollapsed={isCollapsed}
-          color={isCollapsed ? "#64748B" : "var(--primary-select)"}
+        />
+
+        <div className={` ${isCollapsed && "hidden"}`}>
+          <ModeToggle />
+        </div>
+        <CollapseButton
+          isCollapsed={isCollapsed}
+          toggleCollapse={toggleCollapse}
         />
         <NavItem
           href="/"
-          icon="/icons/avatar.png"
+          iconCollapsed="/icons/iconsCollapsed/avatar.png"
+          iconExpanded="/icons/iconsExpanded/avatar.png"
           customText={
-            <div className="flex flex-col">
+            <div className="flex flex-col pr-2 justify-center">
               <span>Rudra Devi</span>
-              <span className="text-xs">rudra.devi@gmail.com</span>
+              <span className="text-[12px]">rudra.devi@gmail.com</span>
             </div>
           }
           isCollapsed={isCollapsed}
-          color={isCollapsed ? "#64748B" : "var(--primary-select)"}
         />
-        <div
-          className={` ${
-            isCollapsed ? "flex justify-center" : "flex items-center space-x-2"
-          }`}
-        >
-          <ModeToggle isCollapsed={isCollapsed} />
-        </div>
-        <button
-          onClick={toggleCollapse}
-          className="flex items-center px-4 py-2 transition-all duration-300 focus:outline-none"
-        >
-          <div>
-            {isCollapsed ? (
-              <img src="/icons/double-chevron-right.png" alt="Chevron Right" />
-            ) : (
-              <img src="/icons/double-chevron-left.png" alt="Chevron Left" />
-            )}
-          </div>
-          <span
-            className={`ml-4 text-sm transition-all duration-300 ${
-              isCollapsed ? "hidden" : "block"
-            }`}
-          >
-            {isCollapsed ? " " : "Collapse"}
-          </span>
-        </button>
       </nav>
     </div>
   );

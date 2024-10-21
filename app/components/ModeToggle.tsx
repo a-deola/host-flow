@@ -12,15 +12,18 @@ export default function ModeToggle() {
     setTheme(isDarkMode ? "light" : "dark");
   };
   return (
-    <div className="flex items-center px-4 py-2">
+    <button className="flex items-center px-4 py-2 hover:text-primary">
       <img
         onClick={toggleDarkMode}
         src={isDarkMode ? "/icons/dark-switch.png" : "/icons/switch-light.png"}
         alt="Mode"
       />
-      <span className="ml-4 text-sm transition-all duration-300">
+      <span
+        onClick={toggleDarkMode}
+        className="ml-4 text-sm transition-all duration-300 "
+      >
         Dark Mode
       </span>
-    </div>
+    </button>
   );
 }

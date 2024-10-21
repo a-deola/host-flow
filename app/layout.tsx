@@ -31,7 +31,7 @@ export default function RootLayout({
         >
           <div className="flex h-screen">
             <SideNav />
-            <section className="flex-grow p-4">{children}</section>
+            <section className="flex-grow">{children}</section>
           </div>
         </ThemeProvider>
       </body>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import NavItem from "./NavItem";
 import ModeToggle from "./ModeToggle";
 import CollapseButton from "./CollapseButton";
+import { navIcons } from "../icons";
 
 const Sidenav = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -19,68 +20,33 @@ const Sidenav = () => {
       }`}
     >
       <nav className="flex flex-col flex-grow">
-        <NavItem
-          href="/"
-          iconCollapsed="/icons/iconsCollapsed/home.png"
-          iconExpanded="/icons/iconsExpanded/home.png"
-          text="Home"
-          isCollapsed={isCollapsed}
-        />
-        <NavItem
-          href="/"
-          iconCollapsed="/icons/iconsCollapsed/components.png"
-          iconExpanded="/icons/iconsExpanded/solar_calendar-linear.png"
-          text="Events"
-          isCollapsed={isCollapsed}
-        />
-        <NavItem
-          href="/"
-          iconExpanded="/icons/iconsExpanded/solar_user-speak-rounded-linear.png"
-          iconCollapsed="/icons/iconsCollapsed/receive-money.png"
-          text="Speakers"
-          isCollapsed={isCollapsed}
-        />
-        <NavItem
-          href="/"
-          iconCollapsed="/icons/iconsCollapsed/calendar.png"
-          iconExpanded="/icons/iconsExpanded/solar_document-linear.png"
-          text="Reports"
-          isCollapsed={isCollapsed}
-        />
-        <NavItem
-          href="/"
-          iconCollapsed="/icons/iconsCollapsed/bell.png"
-          iconExpanded="/icons/iconsExpanded/bell.png"
-          text="Notifications"
-          notificationsCount={5}
-          isCollapsed={isCollapsed}
-        />
-        <NavItem
-          href="/"
-          iconCollapsed="/icons/iconsCollapsed/double-chat-bubble.png"
-          iconExpanded="/icons/iconsExpanded/double-chat-bubble.png"
-          text="Messages"
-          isCollapsed={isCollapsed}
-        />
-        <NavItem
-          href="/"
-          iconCollapsed="/icons/iconsCollapsed/settings.png"
-          iconExpanded="/icons/iconsExpanded/settings.png"
-          text="Settings"
-          isCollapsed={isCollapsed}
-        />
-
-        <div className={` ${isCollapsed && "hidden"}`}>
-          <ModeToggle />
-        </div>
+        {navIcons.map((icon) => (
+          <NavItem
+            key={icon.href}
+            href={icon.href}
+            text={icon.text}
+            iconCollapsed={icon.iconCollapsed}
+            iconExpanded={icon.iconExpanded}
+            isCollapsed={isCollapsed}
+            notificationsCount={icon.notificationCount}
+          />
+        ))}
         <CollapseButton
           isCollapsed={isCollapsed}
           toggleCollapse={toggleCollapse}
         />
+        <div className={` ${isCollapsed && "hidden"}`}>
+          <ModeToggle />
+        </div>
         <NavItem
-          href="/"
-          iconCollapsed="/icons/iconsCollapsed/avatar.png"
-          iconExpanded="/icons/iconsExpanded/avatar.png"
+          href="#"
+          iconCollapsed={
+            <img
+              className="w-full"
+              src="/icons/iconsCollapsed/avatar.png"
+              alt="avatar"
+            />
+          }
           customText={
             <div className="flex flex-col pr-2 justify-center">
               <span>Rudra Devi</span>

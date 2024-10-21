@@ -1,38 +1,42 @@
-import Link from "next/link";
-import React from "react";
+"use client";
 
-export default function NavItem({
+import React from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+interface NavItemProps {
+  href: string;
+  iconCollapsed: React.ReactNode;
+  iconExpanded?: React.ReactNode;
+  text?: string;
+  isCollapsed: boolean;
+  notificationsCount?: number;
+  customText?: React.ReactNode;
+}
+
+const NavItem: React.FC<NavItemProps> = ({
   href,
-  icon,
   iconCollapsed,
   iconExpanded,
   text,
   isCollapsed,
-  customText,
   notificationsCount,
-}: {
-  href: string;
-  icon?: string;
-  iconCollapsed?: string;
-  iconExpanded?: string;
-  text?: string;
-  isCollapsed: boolean;
-  customText?: React.ReactNode;
-  notificationsCount?: number;
-}) {
-  const renderedIcon = icon || (isCollapsed ? iconCollapsed : iconExpanded);
+  customText,
+}) => {
+  const pathname = usePathname();
+  const isActive = pathname === href;
+  const renderedIcon =
+    isCollapsed || !iconExpanded ? iconCollapsed : iconExpanded;
 
   return (
     <Link
       href={href}
-      className="flex items-center px-4 py-2 transition-all duration-300 relative"
+      className={`flex items-center px-4 py-2 transition-all duration-300 relative ${
+        isActive ? "bg-accent text-primary" : " "
+      } hover:text-primary`}
     >
-      <img
-        src={renderedIcon}
-        alt={text}
-        className={`${isCollapsed ? "w-10" : "w-5"}`}
-      />
-      {text === "Notifications" && (
+      <span className={`transition-all duration-300`}>{renderedIcon}</span>
+      {text === "Notifications" && notificationsCount && (
         <span
           className={`absolute top-0 right-3 transform ${
             isCollapsed ? "translate-x-1" : "translate-x-2 translate-y-2"
@@ -52,4 +56,5 @@ export default function NavItem({
       </span>
     </Link>
   );
-}
+};
+export default NavItem;

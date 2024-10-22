@@ -1,9 +1,12 @@
+import EventChart from "./EventChart";
+import { ImgCarousel } from "./ImgCarousel";
+import Subheading from "./Subheading";
 import Summary from "./Summary";
 
 function Dashboard() {
   return (
     <section className="px-5 py-8">
-      <h1 className="text-2xl font-medium">Welcome! here's your summary</h1>
+      <h1 className="text-2xl">Welcome! here's your summary</h1>
       <section className="grid grid-cols-1 md:grid-cols-4 gap-5 my-3">
         <Summary
           summaryName="Total Events"
@@ -31,10 +34,10 @@ function Dashboard() {
         />
       </section>
       <section>
-        <h3>Event Registrations per month</h3>
-        <div>
-          <div></div>
-          <div></div>
+        <Subheading text="Event Registrations per month" />
+        <div className="flex flex-col lg:flex-row gap-2">
+          <EventChart />
+          <ImgCarousel />
         </div>
       </section>
     </section>

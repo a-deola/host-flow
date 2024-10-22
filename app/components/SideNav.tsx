@@ -23,7 +23,7 @@ const Sidenav = () => {
       <nav className="flex flex-col flex-grow">
         {navIcons.map((icon) => (
           <NavItem
-            key={icon.href}
+            key={icon.text}
             href={icon.href}
             text={icon.text}
             iconCollapsed={icon.iconCollapsed}

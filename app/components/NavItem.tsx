@@ -31,9 +31,9 @@ const NavItem: React.FC<NavItemProps> = ({
   return (
     <Link
       href={href}
-      className={`flex items-center px-4 py-2 transition-all duration-300 relative ${
+      className={`flex items-center px-4 py-2 transition-all duration-300 relative bg-none ${
         isActive ? "bg-accent text-primary" : " "
-      } hover:text-primary`}
+      } hover:text-primary bg-accent`}
     >
       <span className={`transition-all duration-300`}>{renderedIcon}</span>
       {text === "Notifications" && notificationsCount && (

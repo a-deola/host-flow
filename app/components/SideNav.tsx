@@ -5,6 +5,7 @@ import NavItem from "./NavItem";
 import ModeToggle from "./ModeToggle";
 import CollapseButton from "./CollapseButton";
 import { navIcons } from "../icons";
+import NavProfile from "./NavProfile";
 
 const Sidenav = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -15,7 +16,7 @@ const Sidenav = () => {
 
   return (
     <div
-      className={`flex flex-col border border-r h-screen transition-all duration-300 gap-2 ${
+      className={`hidden lg:flex flex-col border border-r h-screen transition-all duration-300 gap-2 ${
         isCollapsed ? "w-14" : "w-48"
       }`}
     >
@@ -38,23 +39,7 @@ const Sidenav = () => {
         <div className={` ${isCollapsed && "hidden"}`}>
           <ModeToggle />
         </div>
-        <NavItem
-          href="#"
-          iconCollapsed={
-            <img
-              className="w-full"
-              src="/icons/iconsCollapsed/avatar.png"
-              alt="avatar"
-            />
-          }
-          customText={
-            <div className="flex flex-col pr-2 justify-center">
-              <span>Rudra Devi</span>
-              <span className="text-[12px]">rudra.devi@gmail.com</span>
-            </div>
-          }
-          isCollapsed={isCollapsed}
-        />
+        <NavProfile isCollapsed={isCollapsed} />
       </nav>
     </div>
   );

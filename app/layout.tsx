@@ -4,6 +4,7 @@ import { ThemeProvider } from "./components/ThemeProvider";
 import SideNav from "./components/SideNav";
 
 import { Inter } from "next/font/google";
+import NavTrigger from "./components/NavTrigger";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -31,7 +32,10 @@ export default function RootLayout({
         >
           <div className="flex h-screen">
             <SideNav />
-            <section className="flex-grow">{children}</section>
+            <section className="flex-grow">
+              <NavTrigger />
+              {children}
+            </section>
           </div>
         </ThemeProvider>
       </body>

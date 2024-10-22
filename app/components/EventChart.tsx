@@ -44,7 +44,11 @@ export function EventChart() {
             data={chartData}
             margin={{ top: 20, left: 20, right: 20, bottom: 20 }}
           >
-            <CartesianGrid stroke="#ADA9BB" strokeDasharray="3 3" />
+            <CartesianGrid
+              stroke="#ADA9BB"
+              strokeDasharray="3 3"
+              strokeOpacity={0.2}
+            />
             <XAxis
               dataKey="month"
               tickLine={false}

@@ -5,6 +5,7 @@ import SideNav from "./components/SideNav";
 
 import { Inter } from "next/font/google";
 import NavTrigger from "./components/NavTrigger";
+import FooterNav from "./components/FooterNav";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,13 +31,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex h-screen">
+          <div className="flex min-h-screen">
             <SideNav />
             <section className="flex-grow">
               <NavTrigger />
               {children}
             </section>
           </div>
+          <FooterNav />
         </ThemeProvider>
       </body>
     </html>

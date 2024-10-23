@@ -1,4 +1,4 @@
-import { navIcons } from "../icons";
+import { navIcons } from "../data";
 import FooterLink from "./FooterLink";
 
 function FooterNav() {

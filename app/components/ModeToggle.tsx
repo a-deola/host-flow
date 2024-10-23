@@ -6,13 +6,12 @@ import { useTheme } from "next-themes";
 export default function ModeToggle() {
   const { theme, setTheme } = useTheme();
   const [isDarkMode, setIsDarkMode] = useState(theme === "dark");
-
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
     setTheme(isDarkMode ? "light" : "dark");
   };
   return (
-    <button className="flex items-center px-4 py-2 hover:text-primary">
+    <button className="flex items-center py-2 hover:text-primary">
       <img
         onClick={toggleDarkMode}
         src={isDarkMode ? "/icons/dark-switch.png" : "/icons/switch-light.png"}

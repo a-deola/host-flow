@@ -5,16 +5,14 @@ function NavProfile({ isCollapsed }: { isCollapsed: boolean }) {
     <NavItem
       href="#"
       iconCollapsed={
-        <img
-          className="w-full"
-          src="/icons/iconsCollapsed/avatar.png"
-          alt="avatar"
-        />
+        <img className="" src="/icons/iconsCollapsed/avatar.png" alt="avatar" />
       }
       customText={
-        <div className="flex flex-col pr-2 justify-center">
+        <div className="flex flex-col justify-center">
           <span>Rudra Devi</span>
-          <span className="text-[12px]">rudra.devi@gmail.com</span>
+          <span className="text-[12px] text-muted-foreground">
+            rudra.devi@gmail.com
+          </span>
         </div>
       }
       isCollapsed={isCollapsed}

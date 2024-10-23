@@ -10,7 +10,9 @@ function CollapseButton({
   return (
     <button
       onClick={toggleCollapse}
-      className="flex items-center px-4 py-2 transition-all duration-200 hover:text-primary focus:outline-none"
+      className={`flex items-center  py-2 transition-all duration-300 hover:text-primary focus:outline-none ${
+        isCollapsed ? "justify-center" : ""
+      }`}
     >
       <div className="w-5">
         {isCollapsed ? (

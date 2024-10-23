@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Notification from "./Notification";
 
 interface NavItemProps {
   href: string;
@@ -31,21 +32,19 @@ const NavItem: React.FC<NavItemProps> = ({
   return (
     <Link
       href={href}
-      className={`flex items-center px-4 py-2 transition-all duration-300 relative bg-none ${
-        isActive ? "bg-accent text-primary" : " "
+      className={`flex items-center p-2 rounded transition-all duration-300 relative bg-transparent ${
+        isActive
+          ? "bg-accent text-primary dark:bg-primary dark:text-white"
+          : " "
       } hover:text-primary bg-accent`}
     >
       <span className={`transition-all duration-300`}>{renderedIcon}</span>
+
       {text === "Notifications" && notificationsCount && (
-        <span
-          className={`absolute top-0 right-3 transform ${
-            isCollapsed ? "translate-x-1" : "translate-x-2 translate-y-2"
-          } bg-destructive text-white rounded-full text-xs font-bold flex items-center justify-center transition-all duration-300 ${
-            isCollapsed ? "w-2 h-2" : "w-5 h-5"
-          }`}
-        >
-          {!isCollapsed && notificationsCount}
-        </span>
+        <Notification
+          isCollapsed={isCollapsed}
+          notification={notificationsCount}
+        />
       )}
       <span
         className={`ml-4 text-sm transition-all duration-300 ${

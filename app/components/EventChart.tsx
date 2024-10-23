@@ -36,7 +36,7 @@ const chartConfig = {
 
 export function EventChart() {
   return (
-    <Card className="w-full lg:w-1/2">
+    <Card className="w-full lg:w-1/2 dark:border-none">
       <CardContent>
         <ChartContainer config={chartConfig}>
           <BarChart

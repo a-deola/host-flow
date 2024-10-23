@@ -13,8 +13,8 @@ function Summary({
     sign === "decrease" ? "text-destructive" : "text-success-foreground";
 
   return (
-    <div className="flex flex-col  p-4 border">
-      <div className="flex items-center gap-1 font-bold text-muted-foreground">
+    <div className="flex flex-col p-4 border transition-shadow duration-300 hover:shadow-lg hover:dark:shadow-white/50 hover:shadow-[#8576FF]/50 dark:bg-card dark:border-none">
+      <div className="flex items-center gap-1 font-bold text-muted-foreground dark:text-white">
         <h3>{summaryName}</h3>
         <svg
           xmlns="http://www.w3.org/2000/svg"

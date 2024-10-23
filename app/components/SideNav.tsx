@@ -4,7 +4,7 @@ import { useState } from "react";
 import NavItem from "./NavItem";
 import ModeToggle from "./ModeToggle";
 import CollapseButton from "./CollapseButton";
-import { navIcons } from "../icons";
+import { navIcons } from "../data";
 import NavProfile from "./NavProfile";
 
 const Sidenav = () => {

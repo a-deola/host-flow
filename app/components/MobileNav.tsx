@@ -1,4 +1,4 @@
-import { navIcons } from "../icons";
+import { navIcons } from "../data";
 import { DialogClose } from "./ui/dialog";
 import TopNav from "./TopNav";
 import ModeToggle from "./ModeToggle";

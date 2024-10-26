@@ -31,9 +31,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex min-h-screen">
+          <div className="flex flex-col md:flex-row min-h-screen">
             <SideNav />
-            <section className="flex-grow">
+            <section className="flex flex-col w-full">
               <NavTrigger />
               {children}
             </section>

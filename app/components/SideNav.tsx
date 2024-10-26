@@ -16,10 +16,15 @@ const Sidenav = () => {
 
   return (
     <div
-      className={`hidden lg:flex flex-col border-r h-screen transition-all duration-300 dark:border-none dark:bg-card ${
-        isCollapsed ? "w-14 p-1" : "w-48 p-4"
+      className={`hidden lg:block flex-col border-r min-h-screen transition-all duration-300 dark:border-none dark:bg-card ${
+        isCollapsed ? "w-16 p-1" : "w-48 py-4 px-2"
       }`}
     >
+      <img
+        src={`${isCollapsed ? "/icons/logo.svg" : "/icons/full-logo.png"}`}
+        alt="logo"
+        className=" "
+      />
       <nav className="flex flex-col gap-2 flex-grow">
         {navIcons.map((icon) => (
           <NavItem

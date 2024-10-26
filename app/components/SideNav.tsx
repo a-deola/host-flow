@@ -21,9 +21,9 @@ const Sidenav = () => {
       }`}
     >
       <img
-        src={`${isCollapsed ? "/icons/logo.svg" : "/icons/full-logo.png"}`}
+        src={`${isCollapsed ? "/icons/logo.svg" : "/icons/Logo.svg"}`}
         alt="logo"
-        className=" "
+        className={` mb-5 ${isCollapsed && "w-8"}`}
       />
       <nav className="flex flex-col gap-2 flex-grow">
         {navIcons.map((icon) => (

@@ -13,6 +13,7 @@ interface NavItemProps {
   isCollapsed: boolean;
   notificationsCount?: number;
   customText?: React.ReactNode;
+  onClick?: () => void;
 }
 
 const NavItem: React.FC<NavItemProps> = ({
@@ -23,6 +24,7 @@ const NavItem: React.FC<NavItemProps> = ({
   isCollapsed,
   notificationsCount,
   customText,
+  onClick,
 }) => {
   const pathname = usePathname();
   const isActive = pathname === href;
@@ -32,13 +34,20 @@ const NavItem: React.FC<NavItemProps> = ({
   return (
     <Link
       href={href}
+      onClick={onClick}
       className={`flex items-center p-2 rounded transition-all duration-300 relative bg-transparent ${
         isActive
           ? "bg-accent text-primary dark:bg-primary dark:text-white"
           : " "
       } hover:text-primary bg-accent`}
     >
-      <span className={`transition-all duration-300`}>{renderedIcon}</span>
+      <span
+        className={`transition-all duration-300 ${
+          !isCollapsed && "text-lg text-muted-foreground font-bold"
+        }`}
+      >
+        {renderedIcon}
+      </span>
 
       {text === "Notifications" && notificationsCount && (
         <Notification

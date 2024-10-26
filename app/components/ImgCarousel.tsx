@@ -57,10 +57,10 @@ export function ImgCarousel() {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-      <div className="absolute bottom-2 md:bottom-5 px-3">
-        <div className="py-2 text-white text-[10px] md:text-sm text-justify">
+      <div className="absolute bottom-1 md:bottom-5 px-3">
+        <div className="py-2 text-white text-[12px] md:text-sm text-justify">
           <h3 className="font-bold">Latest News & Updates</h3>
-          <p>{news[current - 1]}</p>
+          <p className="h-10">{news[current - 1]}</p>
         </div>
         <div className="flex justify-center ">
           {images.map((_, index) => (

@@ -5,7 +5,7 @@ function NavProfile({ isCollapsed }: { isCollapsed: boolean }) {
     <NavItem
       href="#"
       iconCollapsed={
-        <img className="" src="/icons/iconsCollapsed/avatar.png" alt="avatar" />
+        <img src="/icons/iconsCollapsed/avatar.png" alt="avatar" />
       }
       customText={
         <div className="flex flex-col justify-center">

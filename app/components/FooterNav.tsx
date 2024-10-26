@@ -7,7 +7,7 @@ function FooterNav() {
     footerLinks.includes(icon.text)
   );
   return (
-    <footer className="lg:hidden border-t">
+    <footer className="border-t dark:border-none md:hidden">
       <div className="flex justify-between px-5">
         {filteredLinks.map(
           ({ text, href, iconExpanded, iconCollapsed }, index) => (

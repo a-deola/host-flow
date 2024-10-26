@@ -23,7 +23,9 @@ function FooterLink({
       }`}
       href={href}
     >
-      <span className="text-lg">{icon ? icon : iconCollapsed}</span>
+      <span className={`text-lg ${isActive ? "text-primary" : " "}`}>
+        {icon ? icon : iconCollapsed}
+      </span>
       <span
         className={`text-sm text-muted-foreground ${
           isActive ? "text-primary" : " "

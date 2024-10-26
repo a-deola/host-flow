@@ -13,8 +13,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Host Flow",
+  title: "Evently",
   description: "Your go to event tracker",
+  icons: ["/icons/evently.ico"],
 };
 
 export default function RootLayout({

@@ -15,7 +15,7 @@ function Notification({
         isCollapsed ? "w-2 h-2" : "w-5 h-5"
       }`}
     >
-      {notification}
+      {isCollapsed ? " " : notification}
     </span>
   );
 }

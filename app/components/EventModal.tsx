@@ -23,11 +23,11 @@ function EventModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="w-full h-full fixed md:w-1/3 md:h-96 rounded dark:border-none">
+      <DialogContent className="w-full h-full fixed lg:w-1/2 lg:h-96 rounded dark:border-none">
         <div className="p-4">
           <DialogHeader>
             <DialogTitle className="flex justify-between font-bold ">
-              {rowData.name}{" "}
+              <h2 className="py-2"> {rowData.name} </h2>
               <Button
                 onClick={onClose}
                 size="sm"
@@ -41,30 +41,36 @@ function EventModal({
             </DialogDescription>
           </DialogHeader>
           <p>{rowData.status}</p>
-          <div className="py-2 flex flex-col justify-center">
+          <div className="py-5 flex flex-col justify-center">
             <img src="/images/avatar-group.png" alt="avatar" className="w-16" />
-            <p className="w-1/2">
+            <p className="w-1/2 py-3">
               Guest Speakers: Dr Friday Onodu, Prof Wobidi and, Dr Linda
               Oghenekaro
             </p>
           </div>
         </div>
-        <DialogFooter className="bg-muted items-center justify-center gap-2 p-3">
-          <span className="w-full">
-            <Button
-              variant="outline"
-              size="sm"
-              className="w-full"
-              onClick={onClose}
-            >
-              Close
-            </Button>
-          </span>
-          <div className="flex flex-col gap-3 w-full">
-            <Button variant="destructive" className="w-full">
-              Delete
-            </Button>
-            <Button className="w-full">Mark as completed</Button>
+        <DialogFooter className="bg-muted p-4">
+          <div className="flex flex-col w-full items-center justify-center gap-3 lg:flex-row lg:justify-between">
+            <span className="w-full">
+              <Button
+                variant="secondary"
+                className=" w-full text-black lg:w-20 border-muted-foreground rounded-none dark:border-none"
+                onClick={onClose}
+              >
+                Edit
+              </Button>
+            </span>
+            <div className="flex flex-col gap-3 w-full lg:flex-row">
+              <Button
+                variant="destructive"
+                className="w-full rounded-none lg:w-32"
+              >
+                Delete
+              </Button>
+              <Button className="w-full text-white rounded-none">
+                Mark as completed
+              </Button>
+            </div>
           </div>
         </DialogFooter>
       </DialogContent>

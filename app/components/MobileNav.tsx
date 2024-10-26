@@ -7,7 +7,7 @@ import MobileLink from "./MobileLink";
 
 const MobileNav = () => {
   return (
-    <section className="flex flex-col h-full lg:hidden">
+    <section className="flex flex-col h-full w-full lg:hidden">
       <TopNav>
         <DialogClose asChild>
           <button className="text-sm font-bold border rounded-full py-1 px-2.5 dark:bg-white dark:border-none dark:text-black">

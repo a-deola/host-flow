@@ -1,11 +1,14 @@
 import EventChart from "./EventChart";
+import { EventsTable } from "./EventsTable";
 import { ImgCarousel } from "./ImgCarousel";
 import Subheading from "./Subheading";
 import Summary from "./Summary";
+import { columns } from "./columns";
+import { events } from "../data";
 
 function Dashboard() {
   return (
-    <section className="px-5 py-8">
+    <div className="p-5">
       <h1 className="text-2xl">Welcome! here's your summary</h1>
       <section className="grid grid-cols-1 md:grid-cols-4 gap-5 my-3">
         <Summary
@@ -35,12 +38,16 @@ function Dashboard() {
       </section>
       <section>
         <Subheading text="Event Registrations per month" />
-        <div className="flex flex-col lg:flex-row gap-2">
+        <div className="flex flex-col md:flex-row gap-5">
           <EventChart />
           <ImgCarousel />
         </div>
       </section>
-    </section>
+      <section>
+        <Subheading text="Events History" />
+        <EventsTable columns={columns} data={events} />
+      </section>
+    </div>
   );
 }
 

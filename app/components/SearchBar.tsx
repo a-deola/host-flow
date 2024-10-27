@@ -22,7 +22,7 @@ function SearchBar({ table }: { table: TableComponent<any> }) {
         placeholder="Search..."
         value={table.getState().globalFilter ?? ""}
         onChange={(event) => table.setGlobalFilter(event.target.value)}
-        className="w-full outline-none h-8 border dark:bg-card dark:border-none"
+        className="w-full outline-none h-8 border lg:min-w-44 dark:bg-card dark:border-none"
       />
     </span>
   );

@@ -7,8 +7,8 @@ import { Button } from "./ui/button";
 function TableTop({ table }: { table: TableComponent<any> }) {
   const rowCount = table.getFilteredRowModel().rows.length;
   return (
-    <div className="mb-8 flex flex-col justify-between lg:flex-row w-full">
-      <div className="flex flex-col gap-1 items-center lg:flex-row lg:w-2/3">
+    <div className="mb-8 px-5 flex flex-col justify-between w-full lg:flex-row lg:p-0">
+      <div className="flex flex-col gap-2 items-center lg:flex-row lg:w-2/3">
         <SearchBar table={table} />
         <div className="flex flex-col w-full gap-2 lg:items-center lg:flex-row">
           <SortButton table={table} column="date" buttonName="Date" />

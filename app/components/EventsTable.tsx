@@ -1,16 +1,20 @@
 "use client";
 
 import { useState } from "react";
+import TablePagination from "./TablePagination";
+import TableTop from "./TableTop";
+import EventModal from "./EventModal";
 import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
   SortingState,
+  ExpandedState,
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
   getFilteredRowModel,
-  CellContext,
+  getExpandedRowModel,
 } from "@tanstack/react-table";
 
 import {
@@ -21,17 +25,10 @@ import {
   TableHeader,
   TableRow,
 } from "./ui/table";
-import TablePagination from "./TablePagination";
-import TableTop from "./TableTop";
-import EventModal from "./EventModal";
 
 interface EventTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
-}
-export interface CustomCellContext<T> extends CellContext<T, unknown> {
-  handleMobileRowClick: (row: any) => void;
-  expandedRowId: string | null;
 }
 
 export function EventsTable<TData, TValue>({
@@ -39,30 +36,30 @@ export function EventsTable<TData, TValue>({
   data,
 }: EventTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
+  const [expanded, setExpanded] = useState<ExpandedState>({});
+  const [selectedRow, setSelectedRow] = useState<any | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const table = useReactTable({
     data,
     columns,
+    getRowCanExpand: (row) => true,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     onSortingChange: setSorting,
+    onExpandedChange: setExpanded,
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    getExpandedRowModel: getExpandedRowModel(),
     state: {
       sorting,
+      expanded: expanded,
     },
   });
-  const [selectedRow, setSelectedRow] = useState<any | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [expandedRowId, setExpandedRowId] = useState(null);
 
   const handleRowClick = (row: any) => {
     setSelectedRow(row);
     setIsModalOpen(true);
-  };
-
-  // Handler to toggle the visibility of hidden fields
-  const handleMobileRowClick = (row: any) => {
-    setExpandedRowId((prevId) => (prevId === row.id ? null : row.id));
   };
   return (
     <div>
@@ -71,18 +68,16 @@ export function EventsTable<TData, TValue>({
         <TableHeader className=" bg-[#F1F5F9] dark:bg-[#6A6676]">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
-              {headerGroup.headers.map((header, index) => {
+              {headerGroup.headers.map((header) => {
                 return (
                   <TableHead
                     key={header.id}
-                    // make second column header span 2 columns
-                    colSpan={index === 1 ? 2 : 1}
                     className={`${
                       header.column.columnDef.header === "Speaker" ||
                       header.column.columnDef.header === "Date"
                         ? "hidden lg:table-cell"
                         : ""
-                    } ${index === 0 ? "hidden" : ""}`}
+                    }`}
                   >
                     {header.isPlaceholder
                       ? null
@@ -100,31 +95,42 @@ export function EventsTable<TData, TValue>({
         <TableBody>
           {table.getRowModel().rows?.length ? (
             table.getRowModel().rows.map((row) => (
-              <TableRow
-                key={row.id}
-                className="cursor-pointer"
-                onClick={() => handleRowClick(row)}
-              >
-                {row.getVisibleCells().map((cell) => {
-                  return (
-                    <TableCell
-                      key={cell.id}
-                      className={
-                        cell.column.columnDef.header === "Speaker" ||
-                        cell.column.columnDef.header === "Date"
-                          ? "hidden lg:table-cell"
-                          : ""
-                      }
-                    >
-                      {flexRender(cell.column.columnDef.cell, {
-                        ...cell.getContext(),
-                        handleMobileRowClick,
-                        expandedRowId,
-                      })}
-                    </TableCell>
-                  );
-                })}
-              </TableRow>
+              <>
+                <TableRow
+                  key={row.id}
+                  className={`cursor-pointer ${
+                    row.getIsExpanded() && "bg-muted dark:bg-background"
+                  }`}
+                  onClick={() => handleRowClick(row)}
+                >
+                  {row.getVisibleCells().map((cell) => {
+                    return (
+                      <TableCell
+                        key={cell.id}
+                        className={
+                          cell.column.columnDef.header === "Speaker" ||
+                          cell.column.columnDef.header === "Date"
+                            ? "hidden lg:table-cell"
+                            : ""
+                        }
+                      >
+                        {flexRender(cell.column.columnDef.cell, {
+                          ...cell.getContext(),
+                        })}
+                      </TableCell>
+                    );
+                  })}
+                </TableRow>
+                {row.getIsExpanded() && (
+                  <TableRow
+                    key={`${row.id}-expanded`}
+                    className="bg-muted border-white border-t dark:bg-background"
+                  >
+                    <TableCell>{row.getValue("speaker")}</TableCell>
+                    <TableCell> {row.getValue("date")}</TableCell>
+                  </TableRow>
+                )}
+              </>
             ))
           ) : (
             <TableRow>

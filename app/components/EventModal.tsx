@@ -31,7 +31,7 @@ function EventModal({
               <Button
                 onClick={onClose}
                 size="sm"
-                className="border bg-transparent text-xs px- text-black rounded-full"
+                className="border bg-transparent text-xs text-black rounded-full dark:bg-white dark:border-none"
               >
                 x
               </Button>

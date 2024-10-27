@@ -15,7 +15,7 @@ const Sidenav = () => {
   };
 
   return (
-    <div
+    <aside
       className={`hidden lg:flex flex-col border-r min-h-screen transition-all duration-300 dark:border-none dark:bg-card ${
         isCollapsed ? "w-16 p-1" : "w-48 py-4 px-2"
       }`}
@@ -46,7 +46,7 @@ const Sidenav = () => {
         </div>
         <NavProfile isCollapsed={isCollapsed} />
       </nav>
-    </div>
+    </aside>
   );
 };
 

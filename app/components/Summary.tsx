@@ -9,11 +9,10 @@ function Summary({
   summaryRating: string;
   sign: string;
 }) {
-  const textColor =
-    sign === "decrease" ? "text-destructive" : "text-success-foreground";
+  const textColor = sign === "decrease" ? "text-destructive" : "text-success";
 
   return (
-    <div className="flex flex-col p-4 border transition-shadow duration-300 hover:shadow-lg hover:dark:shadow-white/50 hover:shadow-[#8576FF]/50 dark:bg-card dark:border-none">
+    <div className="flex flex-col p-4  whitespace-nowrap border transition-shadow duration-300 hover:shadow-lg hover:dark:shadow-white/50 hover:shadow-[#8576FF]/50 dark:bg-card dark:border-none">
       <div className="flex items-center gap-1 font-bold text-muted-foreground dark:text-white">
         <h3>{summaryName}</h3>
         <svg
@@ -71,7 +70,6 @@ function Summary({
             </svg>
           )}
           <p className="text-xs">
-            {" "}
             <span>{sign === "decrease" ? "-" : "+"}</span>
             {summaryRating}
           </p>

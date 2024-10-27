@@ -6,7 +6,7 @@ function TablePagination({ table }: { table: TableComponent<any> }) {
     <div className="flex justify-between items-center mt-5 gap-2 w-full">
       <div className="flex space-x-2 w-4/5 md:full">
         <Button
-          className=" border-2 bg-transparent dark:bg-card text-primary rounded dark:border-none disabled:bg-muted"
+          className=" border-2 h-8 bg-transparent dark:bg-card text-primary rounded dark:border-none disabled:bg-muted"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
         >
@@ -40,7 +40,7 @@ function TablePagination({ table }: { table: TableComponent<any> }) {
           ))}
         </div>
         <Button
-          className=" border-2 bg-transparent text-primary dark:bg-card dark:border-none rounded disabled:bg-muted"
+          className=" border-2 h-8 bg-transparent text-primary dark:bg-card dark:border-none rounded disabled:bg-muted"
           size="icon"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
@@ -60,10 +60,10 @@ function TablePagination({ table }: { table: TableComponent<any> }) {
           </svg>
         </Button>
       </div>
-      <div className="flex items-center gap-2 w-1/3 ">
-        <span className="hidden">Show : </span>
+      <div className="flex gap-2 items-center">
+        <span className="hidden lg:inline-block">Show : </span>
         <span>
-          <Button className="dark:text-white text-xs p-5 dark:bg-card w-20">
+          <Button className=" bg-transparent border text-xs text-black h-8 dark:bg-card dark:text-white w-20">
             10 rows
             <svg
               xmlns="http://www.w3.org/2000/svg"

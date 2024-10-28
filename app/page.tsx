@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <main>
       <header className="px-5 py-3">
-        <h1 className="text-xl lg:text-2xl whitespace-nowrap">
+        <h1 className="text-xl lg:text-2xl lg:whitespace-nowrap">
           Welcome! here&apos;s your summary
         </h1>
       </header>

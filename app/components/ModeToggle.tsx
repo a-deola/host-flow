@@ -16,7 +16,7 @@ export default function ModeToggle() {
       <Image
         onClick={toggleDarkMode}
         src={isDarkMode ? "/icons/dark-switch.png" : "/icons/switch-light.png"}
-        alt="Mode"
+        alt="darkmode"
         width={25}
         height={25}
       />

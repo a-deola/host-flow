@@ -49,7 +49,7 @@ export function ImgCarousel() {
             <CarouselItem key={index}>
               <Card>
                 <CardContent className="flex  items-center justify-center">
-                  <Image src={image} alt="image" className="w-full" />
+                  <Image src={image} alt="image" width={1920} height={1920} />
                 </CardContent>
               </Card>
             </CarouselItem>

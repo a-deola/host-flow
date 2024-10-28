@@ -4,15 +4,19 @@ import { useState } from "react";
 import TablePagination from "./TablePagination";
 import TableTop from "./TableTop";
 import EventModal from "./EventModal";
+import { Event } from "./columns";
+import { Row } from "@tanstack/react-table";
+
 import {
+  useReactTable,
   ColumnDef,
   flexRender,
   getCoreRowModel,
   SortingState,
   ExpandedState,
+  RowSelectionState,
   getPaginationRowModel,
   getSortedRowModel,
-  useReactTable,
   getFilteredRowModel,
   getExpandedRowModel,
 } from "@tanstack/react-table";
@@ -26,24 +30,23 @@ import {
   TableRow,
 } from "./ui/table";
 
-interface EventTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
-  data: TData[];
+export interface EventTableProps {
+  columns: ColumnDef<Event, unknown>[];
+  data: Event[];
 }
 
-export function EventsTable<TData, TValue>({
-  columns,
-  data,
-}: EventTableProps<TData, TValue>) {
+export function EventsTable({ columns, data }: EventTableProps) {
+  const [selectedRow, setSelectedRow] = useState<Event | null>(null);
   const [sorting, setSorting] = useState<SortingState>([]);
   const [expanded, setExpanded] = useState<ExpandedState>({});
-  const [selectedRow, setSelectedRow] = useState<any | null>(null);
+  const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const table = useReactTable({
     data,
     columns,
-    getRowCanExpand: (row) => true,
+    getRowCanExpand: (_row) => true,
+    onRowSelectionChange: setRowSelection,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     onSortingChange: setSorting,
@@ -53,12 +56,17 @@ export function EventsTable<TData, TValue>({
     getExpandedRowModel: getExpandedRowModel(),
     state: {
       sorting,
-      expanded: expanded,
+      expanded,
+      rowSelection,
     },
   });
 
-  const handleRowClick = (row: any) => {
-    setSelectedRow(row);
+  const handleRowClick = (row: Row<Event>) => {
+    setSelectedRow(row.original);
+    setRowSelection((prev) => ({
+      ...prev,
+      [row.id]: !prev[row.id],
+    }));
     setIsModalOpen(true);
   };
   return (

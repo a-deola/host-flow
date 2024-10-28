@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Event } from "./columns";
 import { Button } from "./ui/button";
 import {
   Dialog,
@@ -15,11 +16,11 @@ function EventModal({
   onClose,
 }: {
   isOpen: boolean;
-  selectedRow: any;
+  selectedRow: Event | null;
   onClose: () => void;
 }) {
   if (!selectedRow) return null;
-  const rowData = selectedRow.original;
+  const rowData = selectedRow;
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -42,7 +43,12 @@ function EventModal({
           </DialogHeader>
           <p>{rowData.status}</p>
           <div className="py-5 flex flex-col justify-center">
-            <Image src="/images/avatar-group.png" alt="avatar" width={16} />
+            <Image
+              src="/images/avatar-group.png"
+              alt="avatar"
+              width={50}
+              height={50}
+            />
             <p className="w-1/2 py-3">
               Guest Speakers: Dr Friday Onodu, Prof Wobidi and, Dr Linda
               Oghenekaro

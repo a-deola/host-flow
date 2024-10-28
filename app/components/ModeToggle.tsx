@@ -17,6 +17,8 @@ export default function ModeToggle() {
         onClick={toggleDarkMode}
         src={isDarkMode ? "/icons/dark-switch.png" : "/icons/switch-light.png"}
         alt="Mode"
+        width={25}
+        height={25}
       />
       <span
         onClick={toggleDarkMode}

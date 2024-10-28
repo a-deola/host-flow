@@ -45,7 +45,8 @@ export function EventsTable({ columns, data }: EventTableProps) {
   const table = useReactTable({
     data,
     columns,
-    getRowCanExpand: (_row) => true,
+    /* eslint-disable-next-line */
+    getRowCanExpand: (row) => true,
     onRowSelectionChange: setRowSelection,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),

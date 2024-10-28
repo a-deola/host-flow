@@ -1,8 +1,8 @@
+import Image from "next/image";
 import { Button } from "./ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogClose,
   DialogFooter,
   DialogTitle,
   DialogHeader,
@@ -42,7 +42,7 @@ function EventModal({
           </DialogHeader>
           <p>{rowData.status}</p>
           <div className="py-5 flex flex-col justify-center">
-            <img src="/images/avatar-group.png" alt="avatar" className="w-16" />
+            <Image src="/images/avatar-group.png" alt="avatar" width={16} />
             <p className="w-1/2 py-3">
               Guest Speakers: Dr Friday Onodu, Prof Wobidi and, Dr Linda
               Oghenekaro

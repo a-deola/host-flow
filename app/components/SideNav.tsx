@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import NavItem from "./NavItem";
 import ModeToggle from "./ModeToggle";
@@ -20,7 +21,7 @@ const Sidenav = () => {
         isCollapsed ? "w-16 p-1" : "w-48 py-4 px-2"
       }`}
     >
-      <img
+      <Image
         src={`${isCollapsed ? "/icons/logo.svg" : "/icons/Logo.svg"}`}
         alt="logo"
         className={` mb-5 ${isCollapsed && "w-8"}`}

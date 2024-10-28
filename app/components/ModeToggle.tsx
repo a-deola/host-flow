@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { useTheme } from "next-themes";
 
@@ -12,7 +13,7 @@ export default function ModeToggle() {
   };
   return (
     <button className="flex items-center py-2 hover:text-primary">
-      <img
+      <Image
         onClick={toggleDarkMode}
         src={isDarkMode ? "/icons/dark-switch.png" : "/icons/switch-light.png"}
         alt="Mode"

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "./ui/card";
 import {
@@ -48,7 +49,7 @@ export function ImgCarousel() {
             <CarouselItem key={index}>
               <Card>
                 <CardContent className="flex  items-center justify-center">
-                  <img src={image} alt="image" className="w-full" />
+                  <Image src={image} alt="image" className="w-full" />
                 </CardContent>
               </Card>
             </CarouselItem>

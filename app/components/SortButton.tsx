@@ -1,12 +1,12 @@
 import { Button } from "./ui/button";
 import { Table as TableComponent } from "@tanstack/react-table";
 
-function SortButton({
+function SortButton<TData>({
   table,
   column,
   buttonName,
 }: {
-  table: TableComponent<any>;
+  table: TableComponent<TData>;
   column: string;
   buttonName: string;
 }) {

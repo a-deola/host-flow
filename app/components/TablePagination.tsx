@@ -1,7 +1,7 @@
 import { Button } from "./ui/button";
 import { Table as TableComponent } from "@tanstack/react-table";
 
-function TablePagination({ table }: { table: TableComponent<any> }) {
+function TablePagination<TData>({ table }: { table: TableComponent<TData> }) {
   return (
     <div className="flex justify-between items-center mt-5 gap-2 w-full">
       <div className="flex space-x-2 w-4/5 md:full">

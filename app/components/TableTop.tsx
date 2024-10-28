@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 import SortButton from "./SortButton";
 import { Button } from "./ui/button";
 
-function TableTop({ table }: { table: TableComponent<any> }) {
+function TableTop<TData>({ table }: { table: TableComponent<TData> }) {
   const rowCount = table.getFilteredRowModel().rows.length;
   return (
     <div className="mb-8 px-5 flex flex-col justify-between w-full lg:flex-row lg:p-0">

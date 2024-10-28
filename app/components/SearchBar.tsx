@@ -3,7 +3,7 @@ import { Input } from "./ui/input";
 
 import { Table as TableComponent } from "@tanstack/react-table";
 
-function SearchBar({ table }: { table: TableComponent<any> }) {
+function SearchBar<TData>({ table }: { table: TableComponent<TData> }) {
   return (
     <span className="relative w-full">
       <svg

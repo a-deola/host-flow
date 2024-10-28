@@ -11,7 +11,7 @@ export default function Home() {
     <main>
       <header className="px-5 py-3">
         <h1 className="text-xl lg:text-2xl whitespace-nowrap">
-          Welcome! here's your summary
+          Welcome! here&apos;s your summary
         </h1>
       </header>
       <section className="grid grid-cols-1 md:grid-cols-4 gap-5 my-3 px-5">

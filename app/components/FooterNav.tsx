@@ -8,7 +8,7 @@ function FooterNav() {
   );
   return (
     <footer className="border-t dark:border-none mt-5 md:hidden">
-      <div className="flex justify-between px-5">
+      <div className="flex justify-between text-[5px] gap-2 px-5">
         {filteredLinks.map(
           ({ text, href, iconExpanded, iconCollapsed }, index) => (
             <FooterLink

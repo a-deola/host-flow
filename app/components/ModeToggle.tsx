@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import { useTheme } from "next-themes";
+import { Switch } from "./ui/switch";
 
 export default function ModeToggle() {
   const { theme, setTheme } = useTheme();
@@ -12,20 +12,13 @@ export default function ModeToggle() {
     setTheme(isDarkMode ? "light" : "dark");
   };
   return (
-    <button className="flex items-center py-2 hover:text-primary">
-      <Image
-        onClick={toggleDarkMode}
-        src={isDarkMode ? "/icons/dark-switch.png" : "/icons/switch-light.png"}
-        alt="darkmode"
-        width={25}
-        height={25}
-      />
-      <span
-        onClick={toggleDarkMode}
-        className="ml-4 text-sm transition-all duration-300 "
-      >
-        Dark Mode
-      </span>
-    </button>
+    <div className="flex items-center ">
+      <div className="flex items-center space-x-2 py-2 hover:text-primary">
+        <Switch onClick={toggleDarkMode} />
+        <span className="ml-4 text-sm transition-all duration-300 ">
+          Dark Mode
+        </span>
+      </div>
+    </div>
   );
 }

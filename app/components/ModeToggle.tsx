@@ -12,13 +12,11 @@ export default function ModeToggle() {
     setTheme(isDarkMode ? "light" : "dark");
   };
   return (
-    <div className="flex items-center ">
-      <div className="flex items-center space-x-2 py-2 hover:text-primary">
-        <Switch onClick={toggleDarkMode} />
-        <span className="ml-4 text-sm transition-all duration-300 ">
-          Dark Mode
-        </span>
-      </div>
+    <div className="flex items-center space-x-2 py-2 hover:text-primary">
+      <Switch onClick={toggleDarkMode} />
+      <span className="ml-4 text-sm transition-all duration-300 ">
+        Dark Mode
+      </span>
     </div>
   );
 }

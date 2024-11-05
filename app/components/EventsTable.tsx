@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import TablePagination from "./TablePagination";
 import TableTop from "./TableTop";
 import EventModal from "./EventModal";
@@ -104,9 +104,8 @@ export function EventsTable({ columns, data }: EventTableProps) {
         <TableBody>
           {table.getRowModel().rows?.length ? (
             table.getRowModel().rows.map((row) => (
-              <>
+              <React.Fragment key={row.id}>
                 <TableRow
-                  key={row.id}
                   className={`cursor-pointer ${
                     row.getIsExpanded() && "bg-muted dark:bg-background"
                   }`}
@@ -139,7 +138,7 @@ export function EventsTable({ columns, data }: EventTableProps) {
                     <TableCell> {row.getValue("date")}</TableCell>
                   </TableRow>
                 )}
-              </>
+              </React.Fragment>
             ))
           ) : (
             <TableRow>

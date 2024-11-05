@@ -22,9 +22,6 @@ const chartData = [
   { month: "July", events: 671 },
   { month: "August", events: 762 },
   { month: "September", events: 341 },
-  { month: "October", events: 202 },
-  { month: "November", events: 263 },
-  { month: "December", events: 843 },
 ];
 
 const chartConfig = {
@@ -40,15 +37,11 @@ export function EventChart() {
       <CardContent>
         <ChartContainer config={chartConfig}>
           <BarChart
-            accessibilityLayer
             data={chartData}
             margin={{ top: 20, left: 20, right: 20, bottom: 20 }}
+            className="text-muted text-[8px] dark:text-white"
           >
-            <CartesianGrid
-              stroke="#ADA9BB"
-              strokeDasharray="3 3"
-              strokeOpacity={0.2}
-            />
+            <CartesianGrid stroke="currentColor" strokeDasharray="3 3" />
             <XAxis
               dataKey="month"
               tickLine={false}
@@ -61,6 +54,7 @@ export function EventChart() {
               axisLine={false}
               tickLine={false}
               tickMargin={10}
+              ticks={[0, 200, 400, 600, 800, 1000]}
             />
             <ChartTooltip
               cursor={false}

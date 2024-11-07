@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "./components/ThemeProvider";
 import SideNav from "./components/SideNav";
-
 import { Inter } from "next/font/google";
-import NavTrigger from "./components/NavTrigger";
 import FooterNav from "./components/FooterNav";
 
 const inter = Inter({
@@ -34,10 +32,7 @@ export default function RootLayout({
         >
           <div className="flex flex-col md:flex-row min-h-screen">
             <SideNav />
-            <section className="flex flex-col w-full">
-              <NavTrigger />
-              {children}
-            </section>
+            <section className="flex flex-col w-full">{children}</section>
           </div>
           <FooterNav />
         </ThemeProvider>

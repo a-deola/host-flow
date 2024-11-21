@@ -6,7 +6,6 @@ import Shimmer from "./Shimmer";
 
 function TopNav({ children }: { children: React.ReactNode }) {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
-  console.log("isImageLoaded", isImageLoaded);
   return (
     <nav className="border-b dark:border-none">
       <div className="flex pr-5 py-3 items-center justify-between">

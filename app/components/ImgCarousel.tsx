@@ -13,10 +13,13 @@ import {
 } from "./ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { images, news } from "../data";
+import Shimmer from "./Shimmer";
+import { Skeleton } from "./ui/skeleton";
 
 export function ImgCarousel() {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   useEffect(() => {
     if (!api) {
@@ -49,7 +52,22 @@ export function ImgCarousel() {
             <CarouselItem key={index}>
               <Card>
                 <CardContent className="flex  items-center justify-center">
-                  <Image src={image} alt="image" width={1920} height={1920} />
+                  <Image
+                    src={image}
+                    alt="image"
+                    width={1920}
+                    height={1920}
+                    onLoad={() => setIsImageLoaded(true)}
+                    className={`transition-opacity ${
+                      isImageLoaded ? "opacity-100" : "opacity-0"
+                    }`}
+                  />
+                  {!isImageLoaded && (
+                    <div className="relative pl-5">
+                      <Shimmer />
+                      <Skeleton />
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             </CarouselItem>
